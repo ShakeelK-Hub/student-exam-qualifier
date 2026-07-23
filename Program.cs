@@ -2,14 +2,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        // This list remembers each student's result so we can show them later.
+        // This list stores each student's result so we can display them later.
         List<string> allStudents = new List<string>();
 
         while (true)
         {
             ShowMenu();
 
-            // Read the choice as a whole number instead of text.
+            
             int choice;
 
             try
@@ -19,7 +19,7 @@ class Program
             catch
             {
                 Console.WriteLine("\nPlease enter a valid number.\n");
-                continue; // Goes back to the menu.
+                continue;
             }
 
             switch (choice)
@@ -34,7 +34,7 @@ class Program
 
                 case 3:
                     Console.WriteLine("\nAll entries have been captured.\nThank you & goodbye.\n");
-                    return; // Ends the program immediately.
+                    return;
 
                 default:
                     Console.WriteLine("\nInvalid option. Please choose 1, 2 or 3.\n");
@@ -147,7 +147,7 @@ class Program
         Console.WriteLine($" Result:            {result}");
         Console.WriteLine("\n----------------------------------------\n");
 
-        // Save a summary line so it can be viewed later.
+        // Format and store record in the master list for persistent session viewing
         allStudents.Add($"{name,-20} {average,6:F2}%   {result}");
     }
 
