@@ -14,7 +14,7 @@ class Program
 
             try
             {
-                choice = int.Parse(Console.ReadLine());
+                choice = int.Parse(Console.ReadLine()!);
             }
             catch
             {
@@ -55,7 +55,7 @@ class Program
         Console.Write(" Choose an option: ");
     }
 
-    
+
 
     // Handles entering one student's marks and showing their result.
     static void EnterStudent(List<string> allStudents)
@@ -65,7 +65,7 @@ class Program
         Console.WriteLine("----------------------------------------");
 
         Console.Write("\n Student's name: ");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine()!;
 
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -77,7 +77,7 @@ class Program
         try
         {
             Console.Write(" Test 1 score (30%): ");
-            test1 = int.Parse(Console.ReadLine());
+            test1 = int.Parse(Console.ReadLine()!);
         }
         catch
         {
@@ -95,7 +95,7 @@ class Program
         try
         {
             Console.Write(" Test 2 score (50%): ");
-            test2 = int.Parse(Console.ReadLine());
+            test2 = int.Parse(Console.ReadLine()!);
         }
         catch
         {
@@ -107,7 +107,7 @@ class Program
         try
         {
             Console.Write(" Assignment 1 score (10%): ");
-            assignment1 = int.Parse(Console.ReadLine());
+            assignment1 = int.Parse(Console.ReadLine()!);
         }
         catch
         {
@@ -119,7 +119,7 @@ class Program
         try
         {
             Console.Write(" Project score (10%): ");
-            project = int.Parse(Console.ReadLine());
+            project = int.Parse(Console.ReadLine()!);
         }
         catch
         {
