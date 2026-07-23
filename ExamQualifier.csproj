@@ -1,3 +1,8 @@
+<!-- 
+  blueprint or configuration file for your application
+  basically tells the codepace this is visual studio or read c# code
+-->
+
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
