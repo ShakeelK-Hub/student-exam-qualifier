@@ -103,6 +103,12 @@ class Program
             return;
         }
 
+         if (test2 < 0 || test2 > 100)
+        {
+            Console.WriteLine("\nMarks must be between 0 and 100.\n");
+            return;
+        }
+
         int assignment1;
         try
         {
@@ -115,6 +121,12 @@ class Program
             return;
         }
 
+         if (assignment1 < 0 || assignment1 > 100)
+        {
+            Console.WriteLine("\nMarks must be between 0 and 100.\n");
+            return;
+        }
+
         int project;
         try
         {
@@ -124,6 +136,12 @@ class Program
         catch
         {
             Console.WriteLine("\nInvalid mark. Student entry cancelled.\n");
+            return;
+        }
+
+         if (project < 0 || project > 100)
+        {
+            Console.WriteLine("\nMarks must be between 0 and 100.\n");
             return;
         }
 
