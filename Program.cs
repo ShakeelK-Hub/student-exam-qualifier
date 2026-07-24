@@ -73,6 +73,15 @@ class Program
             return;
         }
 
+        // Check if the name is actually a number - if it can be parsed as one, reject it
+        bool nameIsANumber = double.TryParse(name, out double unusedValue);
+
+        if (nameIsANumber)
+        {
+            Console.WriteLine("\nName cannot be a number. Student entry cancelled.\n");
+            return;
+        }
+
         int test1;
         try
         {
