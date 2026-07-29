@@ -6,26 +6,21 @@ A Dockerized C# console application for evaluating student examination eligibili
 
 <p>
 
-<img src="https://img.shields.io/badge/C%23-.NET%208-512BD4?style=for-the-badge&logo=dotnet&logoColor=white">
+<img src="https://img.shields.io/badge/C%23-.NET%2010-512BD4?style=for-the-badge&logo=dotnet&logoColor=white">
 <img src="https://img.shields.io/badge/Docker-Containerized-2496ED?style=for-the-badge&logo=docker&logoColor=white">
 <img src="https://img.shields.io/badge/Platform-Console-2E3440?style=for-the-badge">
-<img src="https://img.shields.io/badge/Status-Complete-2EA043?style=for-the-badge">
 
 </p>
 
----
-
-*"Simple software, predictable behaviour, reproducible execution."*
-
 </div>
 
-<br>
+---
 
 ## About
 
 This project implements a command-line application that evaluates whether a student is eligible to write their final examination. Marks are collected across four assessment components, combined using predefined weighting rules, and evaluated against the required qualification threshold.
 
-The application is packaged with Docker, allowing it to execute in an isolated and consistent runtime environment without requiring a local .NET installation.
+The application is packaged with Docker, allowing it to run in an isolated, consistent environment without requiring a local .NET installation.
 
 ---
 
@@ -41,31 +36,20 @@ The application is packaged with Docker, allowing it to execute in an isolated a
 **Qualification Requirement**
 
 ```
-Weighted Average ≥ 50%
+Weighted Average >= 50%
 ```
 
 ---
 
-## Architecture
+## How It Works
 
-```
-                   User
-                     │
-                     ▼
-         Console Input Interface
-                     │
-                     ▼
-          Student Object Model
-                     │
-                     ▼
-     Weighted Average Calculation
-                     │
-                     ▼
-      Qualification Decision Engine
-                     │
-                     ▼
-          Console Output Result
-```
+1. The user is shown a menu: enter a new student, view all students, or exit.
+2. Entering a student prompts for their name and four marks (0-100 each).
+3. Each mark is validated - non-numeric input or an out-of-range value cancels that entry.
+4. The weighted average is calculated and compared against the 50% threshold.
+5. Results are stored in memory for the session and can be viewed at any time via "View all students."
+
+Data is held in memory only and is not persisted once the program exits.
 
 ---
 
@@ -74,36 +58,19 @@ Weighted Average ≥ 50%
 ```
 .
 ├── Program.cs
-├── Student.cs
-├── StudentExamQualificationCalculator.csproj
+├── ExamQualifier.csproj
 ├── Dockerfile
-├── .dockerignore
+├── .gitignore
 └── README.md
 ```
 
-Every file has a single responsibility.
-
 | File | Responsibility |
 |------|----------------|
-| `Program.cs` | Application workflow and user interaction |
-| `Student.cs` | Student model and qualification logic |
-| `Dockerfile` | Container build instructions |
-| `.dockerignore` | Excludes unnecessary files during image creation |
+| `Program.cs` | Application menu, input handling, and qualification logic |
+| `ExamQualifier.csproj` | Project configuration (.NET 10 console app) |
+| `Dockerfile` | Multi-stage build: compiles with the .NET SDK, runs on the smaller .NET runtime image |
+| `.gitignore` | Excludes build artifacts from version control |
 | `README.md` | Project documentation |
-
----
-
-## Design Principles
-
-The application was intentionally designed around a small set of principles:
-
-- Clear separation between application flow and business logic
-- Readable object-oriented design
-- Minimal project structure
-- No external dependencies beyond the .NET runtime
-- Deterministic execution through Docker
-
-Rather than introducing unnecessary abstraction, the implementation focuses on clarity and maintainability.
 
 ---
 
@@ -112,13 +79,13 @@ Rather than introducing unnecessary abstraction, the implementation focuses on c
 ### Build
 
 ```bash
-docker build -t student-exam .
+docker build -t examqualifier .
 ```
 
 ### Run
 
 ```bash
-docker run -it student-exam
+docker run -it examqualifier
 ```
 
 The interactive (`-it`) flags allow the application to receive keyboard input from the terminal while running inside the container.
@@ -130,9 +97,8 @@ The interactive (`-it`) flags allow the application to receive keyboard input fr
 | Category | Stack |
 |----------|-------|
 | Language | C# |
-| Framework | .NET |
-| Runtime | .NET SDK |
-| Container | Docker |
+| Framework | .NET 10 |
+| Container | Docker (multi-stage build) |
 | Version Control | Git & GitHub |
 
 ---
@@ -141,14 +107,11 @@ The interactive (`-it`) flags allow the application to receive keyboard input fr
 
 This implementation demonstrates practical understanding of:
 
-- Object-oriented programming
-- Console application development
-- Collection management
-- Business rule implementation
-- Docker image creation
+- Console application development in C#
+- Input validation and error handling
+- Business rule implementation (weighted averages, qualification thresholds)
+- Docker image creation and multi-stage builds
 - Container-based application deployment
-
-These objectives align with the Cloud Native Programming project requirements, which specify creating a console application to determine examination eligibility from weighted assessment marks and packaging the solution as a Docker container. :contentReference[oaicite:0]{index=0}
 
 ---
 
@@ -156,6 +119,6 @@ These objectives align with the Cloud Native Programming project requirements, w
 
 ### Built with C#, .NET and Docker
 
-*Cloud Native Programming • Belgium Campus*
+*Cloud Native Programming - Belgium Campus*
 
 </div>
