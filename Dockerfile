@@ -20,4 +20,4 @@ WORKDIR /app
 COPY --from=build /app/out .
 
 # Define the command that runs when the container starts
-ENTRYPOINT ["dotnet", "Exam Qualifier.dll"]
+ENTRYPOINT ["dotnet", "ExamQualifier.dll"]
